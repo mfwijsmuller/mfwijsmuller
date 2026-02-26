@@ -1,0 +1,47 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "Shopify Quiz App"
+client_id = "{{ SHOPIFY_API_KEY }}"
+application_url = "{{ APP_URL }}"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "{{ DEV_STORE }}"
+
+[access_scopes]
+# Customer metafields (read/write), merchant data for admin UI
+scopes = "read_customers,write_customers,read_customer_metafields,write_customer_metafields"
+
+[auth]
+redirect_urls = [
+  "{{ APP_URL }}/auth/callback",
+  "{{ APP_URL }}/auth/shopify/callback",
+  "http://localhost:3000/auth/callback",
+  "http://localhost:3000/auth/shopify/callback"
+]
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = ["app/uninstalled"]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = ["customers/data_request"]
+  uri = "/webhooks/customers/data_request"
+  compliance_topics = true
+
+  [[webhooks.subscriptions]]
+  topics = ["customers/redact"]
+  uri = "/webhooks/customers/redact"
+  compliance_topics = true
+
+  [[webhooks.subscriptions]]
+  topics = ["shop/redact"]
+  uri = "/webhooks/shop/redact"
+  compliance_topics = true
+
+[pos]
+embedded = false

@@ -1,0 +1,17 @@
+{
+  "name": "customer-account-quiz",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "shopify app build --extension-only",
+    "dev": "shopify app dev --extension-only"
+  },
+  "dependencies": {
+    "@shopify/ui-extensions": "^2024.10.0",
+    "@shopify/ui-extensions-react": "^2024.10.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "typescript": "^5.7.3"
+  }
+}

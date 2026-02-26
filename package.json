@@ -1,0 +1,50 @@
+{
+  "name": "shopify-quiz-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "remix vite:build",
+    "dev": "shopify app dev",
+    "config:link": "shopify app config link",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
+    "setup": "prisma generate && prisma migrate deploy",
+    "docker-start": "npm run setup && npm run start",
+    "prisma": "prisma",
+    "start": "remix-serve ./build/server/index.js",
+    "knip": "knip"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "@shopify/app-bridge-react": "^4.1.6",
+    "@shopify/polaris": "^13.9.5",
+    "@shopify/shopify-app-remix": "^3.4.0",
+    "@shopify/shopify-app-session-storage-prisma": "^5.1.4",
+    "isbot": "^5.1.17",
+    "jose": "^5.9.6",
+    "remix-utils": "^7.7.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.15.2",
+    "@types/node": "^22.10.7",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "knip": "^5.40.0",
+    "prettier": "^3.4.2",
+    "prisma": "^5.20.0",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.11",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "workspaces": [
+    "extensions/*"
+  ],
+  "engines": {
+    "node": ">=18.20.0"
+  }
+}

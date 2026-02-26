@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Shopify OAuth sessions (required by @shopify/shopify-app-session-storage-prisma)
+// ---------------------------------------------------------------------------
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+}
+
+// ---------------------------------------------------------------------------
+// Per-store quiz configuration (questions, options, consent text, toggles)
+// ---------------------------------------------------------------------------
+model QuizConfig {
+  id          String   @id @default(cuid())
+  shop        String   @unique
+  enabled     Boolean  @default(true)
+  /// JSON array of QuizQuestion objects (see QuizQuestion type in quiz-config.server.ts)
+  questions   String   @default("[]")
+  consentText String   @default("Your answers help us personalise your experience. You can request deletion at any time.")
+  namespace   String   @default("zpd")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// Aggregate quiz completion stats (no PII stored here)
+// ---------------------------------------------------------------------------
+model QuizStats {
+  id             String   @id @default(cuid())
+  shop           String   @unique
+  totalCompleted Int      @default(0)
+  updatedAt      DateTime @updatedAt
+}

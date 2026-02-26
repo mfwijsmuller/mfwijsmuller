@@ -1,0 +1,16 @@
+{
+  "quiz": {
+    "title": "Tell us about yourself",
+    "subtitle": "Answer a few quick questions to help us personalise your shopping experience.",
+    "submit": "Save my preferences",
+    "loading": "Loading your personalisation quiz\u2026",
+    "saving": "Saving your answers\u2026",
+    "done_title": "Thank you!",
+    "done_body": "Your preferences have been saved. We\u2019ll use them to personalise your experience.",
+    "done_cta": "Go to my account",
+    "error_title": "Something went wrong",
+    "retry": "Try again",
+    "completed_title": "You\u2019re all set!",
+    "completed_body": "Your preferences are already saved. Thank you for completing the quiz."
+  }
+}

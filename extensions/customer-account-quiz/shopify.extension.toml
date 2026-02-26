@@ -1,0 +1,27 @@
+# Customer Account UI Extension configuration
+# https://shopify.dev/docs/api/customer-account-ui-extensions
+
+api_version = "2025-01"
+
+[[extensions]]
+name = "Onboarding Quiz"
+handle = "customer-account-quiz"
+type = "ui_extension"
+
+  # Render a full page in the customer account area.
+  # The extension will be accessible at /extensions/customer-account-quiz
+  [[extensions.targeting]]
+  module = "./src/index.tsx"
+  target = "customer-account.page.render"
+
+  [extensions.capabilities]
+  # Allow the extension to make network requests to our app backend
+  network_access = true
+
+  [extensions.settings]
+  # App URL is injected so the extension knows where to call
+  [[extensions.settings.fields]]
+  key = "app_url"
+  type = "single_line_text_field"
+  name = "App URL"
+  description = "Base URL of the Shopify Quiz App backend"
