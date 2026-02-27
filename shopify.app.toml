@@ -11,7 +11,7 @@ dev_store_url = "mw-blog.myshopify.com"
 
 [access_scopes]
 # Customer metafields (read/write), merchant data for admin UI
-scopes = "read_customers,write_customers,read_customer_metafields,write_customer_metafields"
+scopes = "read_customers,write_customers"
 
 [auth]
 redirect_urls = [
